@@ -13,7 +13,7 @@ import UIKit
     private var _innerLevel: UIWindow.Level = .normal
     override public var windowLevel: UIWindow.Level {
         get {
-            return UIWindow.Level(rawValue: 10000002)
+            return _innerLevel
         }
 
         set {
@@ -57,10 +57,15 @@ import UIKit
     }
 
     @objc open func show() {
+        show(level: UIWindow.Level(rawValue: 10000002))
+    }
+
+    @objc open func show(level: UIWindow.Level) {
         guard isHidden, mainWindow != nil else {
             return
         }
 
+        windowLevel = level
         frame = mainWindow!.frame
         isHidden = false
         backgroundColor = .clear

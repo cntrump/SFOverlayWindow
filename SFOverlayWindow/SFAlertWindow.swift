@@ -22,6 +22,12 @@ public class SFAlertWindow: SFOverlayWindow {
         }
     }
 
+    @objc open var textFields: [UITextField]? {
+        get {
+            return alertRootVC.textFields
+        }
+    }
+
     private var mainWindow: UIWindow? {
         get {
             return UIApplication.shared.delegate?.window as? UIWindow
@@ -74,9 +80,18 @@ public class SFAlertWindow: SFOverlayWindow {
         let action = UIAlertAction(title: title, style: .default, handler: handler)
         addAction(action)
     }
+
+    @objc public func addTextField(configurationHandler: ((UITextField) -> Void)? = nil) {
+        alertRootVC.addTextField(configurationHandler: configurationHandler)
+    }
     
     @objc override public func show() {
         super.show()
+        alertRootVC.show()
+    }
+
+    @objc public func showWithKeyboard() {
+        super.show(level: UIWindow.Level(rawValue: 10000000))
         alertRootVC.show()
     }
 }
@@ -85,6 +100,11 @@ class AlertRootController: OverlayViewController {
     var alert: UIAlertController!
     var alertTitle: String?
     var alertMessage: String?
+    var textFields: [UITextField]? {
+        get {
+            return alert.textFields
+        }
+    }
 
     init(title: String?, message: String?) {
         super.init(nibName: nil, bundle: nil)
@@ -100,6 +120,10 @@ class AlertRootController: OverlayViewController {
 
     func addAction(_ action: UIAlertAction) {
         alert.addAction(action)
+    }
+
+    func addTextField(configurationHandler: ((UITextField) -> Void)? = nil) {
+        alert.addTextField(configurationHandler: configurationHandler)
     }
 
     func show() {
