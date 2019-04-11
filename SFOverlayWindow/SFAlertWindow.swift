@@ -62,23 +62,24 @@ public class SFAlertWindow: SFOverlayWindow {
     }
 
     @objc public func addAction(title: String?, style: UIAlertAction.Style, handler: ((UIAlertAction) -> Void)? = nil) {
+        guard let title = title else {
+            return
+        }
+
         let action = UIAlertAction(title: title, style: style, handler: handler)
         addAction(action)
     }
 
     @objc public func addCancelAction(title: String?, handler: ((UIAlertAction) -> Void)? = nil) {
-        let action = UIAlertAction(title: title, style: .cancel, handler: handler)
-        addAction(action)
+        addAction(title: title, style: .cancel, handler: handler)
     }
 
     @objc public func addDestructiveAction(title: String?, handler: ((UIAlertAction) -> Void)? = nil) {
-        let action = UIAlertAction(title: title, style: .destructive, handler: handler)
-        addAction(action)
+        addAction(title: title, style: .destructive, handler: handler)
     }
 
     @objc public func addDefaultAction(title: String?, handler: ((UIAlertAction) -> Void)? = nil) {
-        let action = UIAlertAction(title: title, style: .default, handler: handler)
-        addAction(action)
+        addAction(title: title, style: .default, handler: handler)
     }
 
     @objc public func addTextField(configurationHandler: ((UITextField) -> Void)? = nil) {
