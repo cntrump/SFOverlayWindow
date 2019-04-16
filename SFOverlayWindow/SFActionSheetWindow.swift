@@ -118,7 +118,7 @@ class ActionSheetRootController: OverlayViewController {
         alert.message = alertMessage
 
         if isPad, let sourceView = sourceView, let popoverPresentationController = alert.popoverPresentationController {
-            popoverPresentationController.permittedArrowDirections = .down
+            popoverPresentationController.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
             popoverPresentationController.sourceView = sourceView
             popoverPresentationController.sourceRect = sourceView.bounds
         }
