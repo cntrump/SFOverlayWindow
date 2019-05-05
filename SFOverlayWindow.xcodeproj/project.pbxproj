@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		732BEECC227FA5B1001B816B /* SFSafariWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 732BEECB227FA5B1001B816B /* SFSafariWindow.swift */; };
 		73B28CE22254544F004DAAB7 /* UIViewController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B28CE12254544F004DAAB7 /* UIViewController+extension.swift */; };
 		73B682F82254537900C60384 /* SFOverlayWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 73B682F62254537900C60384 /* SFOverlayWindow.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		73B68301225453A000C60384 /* SFOverlayWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B682FE225453A000C60384 /* SFOverlayWindow.swift */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		732BEECB227FA5B1001B816B /* SFSafariWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSafariWindow.swift; sourceTree = "<group>"; };
 		73B28CE12254544F004DAAB7 /* UIViewController+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+extension.swift"; sourceTree = "<group>"; };
 		73B682F32254537900C60384 /* SFOverlayWindow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SFOverlayWindow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		73B682F62254537900C60384 /* SFOverlayWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SFOverlayWindow.h; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 				73B682FF225453A000C60384 /* SFActionSheetWindow.swift */,
 				73B68300225453A000C60384 /* SFAlertWindow.swift */,
 				73B682FE225453A000C60384 /* SFOverlayWindow.swift */,
+				732BEECB227FA5B1001B816B /* SFSafariWindow.swift */,
 				73B682F62254537900C60384 /* SFOverlayWindow.h */,
 				73B682F72254537900C60384 /* Info.plist */,
 			);
@@ -144,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				73B28CE22254544F004DAAB7 /* UIViewController+extension.swift in Sources */,
+				732BEECC227FA5B1001B816B /* SFSafariWindow.swift in Sources */,
 				73B68303225453A000C60384 /* SFAlertWindow.swift in Sources */,
 				73B68301225453A000C60384 /* SFOverlayWindow.swift in Sources */,
 				73B68302225453A000C60384 /* SFActionSheetWindow.swift in Sources */,

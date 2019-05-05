@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class ViewController: UIViewController {
 
@@ -42,6 +43,16 @@ class ViewController: UIViewController {
             NSLayoutConstraint(item: testCustomButton, attribute: .top, relatedBy: .equal, toItem: testActionSheetButton, attribute: .bottom, multiplier: 1, constant: 10),
             NSLayoutConstraint(item: testCustomButton, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0),
             ])
+
+        let testSafariButton = UIButton(type: .system)
+        testSafariButton.setTitle("Safari", for: .normal)
+        testSafariButton.addTarget(self, action: #selector(testSafari(_:)), for: .touchUpInside)
+        view.addSubview(testSafariButton)
+        testSafariButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addConstraints([
+            NSLayoutConstraint(item: testSafariButton, attribute: .top, relatedBy: .equal, toItem: testCustomButton, attribute: .bottom, multiplier: 1, constant: 10),
+            NSLayoutConstraint(item: testSafariButton, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0),
+            ])
     }
 
     @objc func testAlert(_: AnyObject) {
@@ -66,6 +77,11 @@ class ViewController: UIViewController {
 
     @objc func testCustom(_: AnyObject) {
         SFOverlayWindow.window().present(CustomViewController(), animated: true)
+    }
+
+    @objc func testSafari(_: AnyObject) {
+        let url = URL(string: "https://github.com")
+        SFSafariWindow.window().present(url: url!, animated: true)
     }
 }
 

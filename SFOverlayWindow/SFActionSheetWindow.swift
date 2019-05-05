@@ -22,12 +22,6 @@ public class SFActionSheetWindow: SFOverlayWindow {
         }
     }
 
-    private var mainWindow: UIWindow? {
-        get {
-            return UIApplication.shared.delegate?.window as? UIWindow
-        }
-    }
-
     private var actionSheetRootVC: ActionSheetRootController!
 
     @objc public class func window(title: String?, message: String? = nil) -> Self {

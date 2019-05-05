@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 @available(iOSApplicationExtension, unavailable)
 @objc public class SFOverlayWindow: UIWindow {
@@ -21,7 +22,7 @@ import UIKit
         }
     }
 
-    private var mainWindow: UIWindow? {
+    internal var mainWindow: UIWindow? {
         get {
             return UIApplication.shared.delegate?.window as? UIWindow
         }
@@ -52,8 +53,22 @@ import UIKit
             return
         }
 
+        if isKind(of: SFSafariWindow.self) {
+            if !viewControllerToPresent.isKind(of: SFSafariViewController.self) {
+                return
+            }
+
+            let vc = viewControllerToPresent as! SFSafariViewController
+            if vc.delegate == nil || !vc.delegate!.isEqual(self) {
+                return
+            }
+        }
+
         show()
-        rootVC?.present(viewControllerToPresent, animated: flag, completion: completion)
+
+        DispatchQueue.main.async { [weak self] in
+            self?.rootVC?.present(viewControllerToPresent, animated: flag, completion: completion)
+        }
     }
 
     @objc open func show() {
@@ -74,11 +89,17 @@ import UIKit
         backgroundColor = .clear
         makeKeyAndVisible()
     }
+
+    internal func destory() {
+        isHidden = true
+        rootViewController = nil
+        mainWindow?.makeKey()
+    }
 }
 
 class OverlayViewController: UIViewController {
     fileprivate weak var mainWindow: UIWindow?
-    fileprivate var rootWindow: UIWindow?
+    fileprivate var rootWindow: SFOverlayWindow?
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         guard mainWindow?.rootViewController != nil else {
@@ -95,9 +116,7 @@ class OverlayViewController: UIViewController {
             }
 
             if self?.presentedViewController == nil {
-                self?.rootWindow?.isHidden = true
-                self?.rootWindow = nil
-                self?.mainWindow?.makeKey()
+                self?.rootWindow?.destory()
             }
         }
     }

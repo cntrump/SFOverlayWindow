@@ -28,12 +28,6 @@ public class SFAlertWindow: SFOverlayWindow {
         }
     }
 
-    private var mainWindow: UIWindow? {
-        get {
-            return UIApplication.shared.delegate?.window as? UIWindow
-        }
-    }
-
     private var alertRootVC: AlertRootController!
 
     @objc public class func window(title: String?, message: String? = nil) -> Self {
