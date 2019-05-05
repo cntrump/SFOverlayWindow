@@ -65,14 +65,14 @@ import UIKit
             return
         }
 
-        windowLevel = level
-        frame = mainWindow!.frame
-        isHidden = false
-        backgroundColor = .clear
-
         rootVC?.view.backgroundColor = .clear
         rootVC?.mainWindow = mainWindow
         rootVC?.rootWindow = self
+
+        windowLevel = level
+        frame = mainWindow!.frame
+        backgroundColor = .clear
+        makeKeyAndVisible()
     }
 }
 
@@ -97,6 +97,7 @@ class OverlayViewController: UIViewController {
             if self?.presentedViewController == nil {
                 self?.rootWindow?.isHidden = true
                 self?.rootWindow = nil
+                self?.mainWindow?.makeKey()
             }
         }
     }
