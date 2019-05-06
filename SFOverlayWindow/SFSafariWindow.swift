@@ -12,7 +12,7 @@ import SafariServices
 @available(iOS 9.0, *)
 @available(iOSApplicationExtension, unavailable)
 public class SFSafariWindow: SFOverlayWindow, SFSafariViewControllerDelegate {
-    @objc func present(url: URL, animated flag: Bool, completion: (() -> Void)? = nil) {
+    @objc open func present(url: URL, animated flag: Bool, completion: (() -> Void)? = nil) {
         let vc = SFSafariViewController(url: url)
         vc.delegate = self
         present(vc, animated: flag, completion: completion)
