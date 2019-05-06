@@ -48,7 +48,8 @@ import SafariServices
         fatalError("init(coder:) has not been implemented")
     }
 
-    @objc open func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
+    @objc(presentViewController:animated:completion:)
+    open func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
         guard isHidden, mainWindow != nil, rootVC?.presentedViewController == nil else {
             return
         }

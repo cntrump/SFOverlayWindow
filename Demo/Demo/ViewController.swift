@@ -81,7 +81,7 @@ class ViewController: UIViewController {
 
     @objc func testSafari(_: AnyObject) {
         let url = URL(string: "https://github.com")
-        SFSafariWindow.window().present(url: url!, animated: true)
+        SFSafariWindow.window().present(url!, animated: true)
     }
 }
 
