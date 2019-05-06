@@ -53,14 +53,16 @@ import SafariServices
             return
         }
 
-        if isKind(of: SFSafariWindow.self) {
-            if !viewControllerToPresent.isKind(of: SFSafariViewController.self) {
-                return
-            }
+        if #available(iOS 9.0, *) {
+            if isKind(of: SFSafariWindow.self) {
+                if !viewControllerToPresent.isKind(of: SFSafariViewController.self) {
+                    return
+                }
 
-            let vc = viewControllerToPresent as! SFSafariViewController
-            if vc.delegate == nil || !vc.delegate!.isEqual(self) {
-                return
+                let vc = viewControllerToPresent as! SFSafariViewController
+                if vc.delegate == nil || !vc.delegate!.isEqual(self) {
+                    return
+                }
             }
         }
 
