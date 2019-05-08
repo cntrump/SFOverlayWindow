@@ -14,13 +14,14 @@ import SafariServices
 public class SFSafariWindow: SFOverlayWindow, SFSafariViewControllerDelegate {
     @objc(presentURL:animated:completion:)
     open func present(_ url: URL, animated flag: Bool, completion: (() -> Void)? = nil) {
+        windowLevel = .normal
         let vc = SFSafariViewController(url: url)
         vc.delegate = self
         present(vc, animated: flag, completion: completion)
     }
 
     public func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4, execute: { [weak self] in
             self?.destory()
         })
     }

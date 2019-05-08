@@ -11,14 +11,14 @@ import SafariServices
 
 @available(iOSApplicationExtension, unavailable)
 @objc public class SFOverlayWindow: UIWindow {
-    private var _innerLevel: UIWindow.Level = .normal
+    private var innerWindowLevel: UIWindow.Level = UIWindow.Level(rawValue: 10000002)
     override public var windowLevel: UIWindow.Level {
         get {
-            return _innerLevel
+            return innerWindowLevel
         }
 
         set {
-            _innerLevel = newValue
+            innerWindowLevel = newValue
         }
     }
 
@@ -75,7 +75,7 @@ import SafariServices
     }
 
     @objc open func show() {
-        show(level: UIWindow.Level(rawValue: 10000002))
+        show(level: windowLevel)
     }
 
     @objc open func show(level: UIWindow.Level) {
