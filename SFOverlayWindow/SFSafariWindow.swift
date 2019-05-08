@@ -39,7 +39,7 @@ public class SFSafariWindow: SFOverlayWindow, SFSafariViewControllerDelegate {
 
     private var _dismissButtonStyle: Int = 0
     @available(iOS 11.0, *)
-    open var dismissButtonStyle: SFSafariViewController.DismissButtonStyle {
+    @objc open var dismissButtonStyle: SFSafariViewController.DismissButtonStyle {
         get {
             return SFSafariViewController.DismissButtonStyle(rawValue: _dismissButtonStyle) ?? .done
         }
