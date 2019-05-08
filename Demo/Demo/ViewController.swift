@@ -81,7 +81,18 @@ class ViewController: UIViewController {
 
     @objc func testSafari(_: AnyObject) {
         let url = URL(string: "https://github.com")
-        SFSafariWindow.window().present(url!, animated: true)
+        let safariWindow = SFSafariWindow.window()
+
+        if #available(iOS 10.0, *) {
+            safariWindow.preferredBarTintColor = .black
+            safariWindow.preferredControlTintColor = .white
+        }
+
+        if #available(iOS 11.0, *) {
+            safariWindow.dismissButtonStyle = .close
+        }
+
+        safariWindow.present(url!, animated: true)
     }
 }
 
