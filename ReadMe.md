@@ -30,6 +30,26 @@ actionSheet.addAction(title: "cancel", style: .cancel)
 actionSheet.show()
 ```
 
+## SFSafariWindow
+
+a wrapper of SFSafariViewController
+
+```swift
+let url = URL(string: "https://github.com")
+let safariWindow = SFSafariWindow.window()
+
+if #available(iOS 10.0, *) {
+    safariWindow.preferredBarTintColor = .black
+    safariWindow.preferredControlTintColor = .white
+}
+
+if #available(iOS 11.0, *) {
+    safariWindow.dismissButtonStyle = .close
+}
+
+safariWindow.present(url!, animated: true)
+```
+
 ## Present Custom UIViewController
 
 ```swift
