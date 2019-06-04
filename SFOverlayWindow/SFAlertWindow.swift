@@ -51,6 +51,10 @@ public class SFAlertWindow: SFOverlayWindow {
         fatalError("init(coder:) has not been implemented")
     }
 
+    @objc required init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+
     @objc public func addAction(_ action: UIAlertAction) {
         alertRootVC.addAction(action)
     }

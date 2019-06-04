@@ -39,6 +39,10 @@ public class SFActionSheetWindow: SFOverlayWindow {
         fatalError("init(coder:) has not been implemented")
     }
 
+    @objc required init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+
     @objc public func addAction(_ action: UIAlertAction) {
         actionSheetRootVC.addAction(action)
     }

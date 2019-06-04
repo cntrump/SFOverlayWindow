@@ -35,10 +35,10 @@ import SafariServices
     }
 
     @objc public class func window() -> Self {
-        return self.init()
+        return self.init(frame: .zero)
     }
 
-    @objc public override init(frame: CGRect) {
+    @objc required override init(frame: CGRect) {
         super.init(frame: frame)
 
         rootViewController = OverlayViewController()
@@ -70,6 +70,7 @@ import SafariServices
         show()
 
         DispatchQueue.main.async { [weak self] in
+            viewControllerToPresent.modalPresentationStyle = .fullScreen
             self?.rootVC?.present(viewControllerToPresent, animated: flag, completion: completion)
         }
     }
@@ -95,7 +96,7 @@ import SafariServices
 
     internal func destory() {
         isHidden = true
-        rootViewController = nil
+        rootVC?.rootWindow = nil
         mainWindow?.makeKey()
     }
 }
